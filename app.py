@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -6,5 +6,11 @@ app = Flask(__name__)
 def hello_world():
     return "<p>Hello, World!</p>"
 
+@app.route("/products")
+def products():
+    return "this is products page"
+
+
+
 if __name__ == "__main__":
-    app.run(debud=True)
+    app.run(debug=True, port=8000)
