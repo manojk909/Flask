@@ -1,15 +1,21 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
 
+app.config('SQLALCHEMY_DATABASE_URI') = "sqlite:///task.db"
+app.config('SQLALCHEMY_TRACK_MODIFICATION') = False
+db = SQLAlchemy(app)
+
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return render_template('index.html')
+    # return "<p>Hello, World!</p>"
 
 @app.route("/products")
 def products():
     return "this is products page"
-
 
 
 if __name__ == "__main__":
